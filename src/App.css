@@ -1,3 +1,13 @@
+.App {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
 .accent {
   color: rgb(234, 72, 99);
+}
+
+.App footer {
+  font-size: 13px;
+  margin: 20px 0;
 }
