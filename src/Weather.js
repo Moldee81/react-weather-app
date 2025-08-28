@@ -13,8 +13,8 @@ export default function Weather(props) {
       condition: response.data.condition.description,
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
-      icon: response.data.condition.description.icon,
-      iconUrl: response.data.condition.description.icon_url,
+      icon: response.data.condition.icon,
+      iconUrl: response.data.condition.icon_url,
       city: response.data.city,
       date: response.data.time,
     });
@@ -40,7 +40,7 @@ export default function Weather(props) {
         <h1>{WeatherData.city}</h1>
         <ul>
           <li>{WeatherData.date}</li>
-          <li>{WeatherData.condition}</li>
+          <li class="text-capitalize">{WeatherData.condition}</li>
         </ul>
         <div className="row">
           <div className="col-6">
@@ -51,7 +51,7 @@ export default function Weather(props) {
             </span>{" "}
             <span className="unit">°C</span>
           </div>
-          <div className="col-6">
+          <div className="col-6 weather-extras">
             <ul>
               <li>Humidity: {WeatherData.humidity}%</li>
               <li>Wind: {WeatherData.wind}km/h</li>
@@ -61,7 +61,7 @@ export default function Weather(props) {
       </div>
     );
   } else {
-    const url = `https://api.shecodes.io/weather/v1/current?query=${props.city}&key=6dod2fbfa8c43fe552ftae49bc36d90b`;
+    const url = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=6dod2fbfa8c43fe552ftae49bc36d90b`;
     axios.get(url).then(handleResponse);
     return "Loading...";
   }
