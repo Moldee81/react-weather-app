@@ -6,7 +6,7 @@ import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
   const [WeatherData, setWeatherData] = useState({ ready: false });
-
+  const [city, setCity] = useState(props.defaultCity);
   function handleResponse(response) {
     console.log(response.data);
     setWeatherData({
@@ -21,10 +21,22 @@ export default function Weather(props) {
       date: new Date(response.data.time * 1000),
     });
   }
+  function search() {
+    const url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=6dod2fbfa8c43fe552ftae49bc36d90b`;
+    axios.get(url).then(handleResponse);
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+
   if (WeatherData.ready) {
     return (
       <div className="Weather">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-9">
               <input
@@ -32,6 +44,7 @@ export default function Weather(props) {
                 placeholder="Enter a city..."
                 autoFocus="on"
                 className="form-control"
+                onChange={handleCityChange}
               />
             </div>
             <div className="col-3">
@@ -43,8 +56,6 @@ export default function Weather(props) {
       </div>
     );
   } else {
-    const url = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=6dod2fbfa8c43fe552ftae49bc36d90b`;
-    axios.get(url).then(handleResponse);
     return "Loading...";
   }
 }
