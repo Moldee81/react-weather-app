@@ -15,7 +15,7 @@ export default function WeatherTemperature(props) {
   }
   if (unit === "celsius") {
     return (
-      <span className="WeatherTemperature">
+      <div className="WeatherTemperature">
         <span className="temperature"> {Math.round(props.celsius)}</span>{" "}
         <span className="unit">
           °C |{" "}
@@ -23,7 +23,7 @@ export default function WeatherTemperature(props) {
             °F
           </a>
         </span>
-      </span>
+      </div>
     );
   } else {
     return (
