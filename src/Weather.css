@@ -37,7 +37,7 @@
   list-style: none;
 }
 .Weather .temperature {
-  font-size: 64px;
+  font-size: 54px;
   color: rgb(33, 33, 33);
   font-weight: 400;
   margin-left: -20px;
@@ -46,7 +46,7 @@
   position: relative;
   top: -25px;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 25px;
 }
 .weather-extras {
   padding-top: 25px;
