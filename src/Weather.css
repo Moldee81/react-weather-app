@@ -27,7 +27,7 @@
 }
 .Weather img {
   margin-left: 10px;
-  margin-bottom: 30px;
+  padding-bottom: 20px;
 }
 .Weather li {
   padding-left: 30px;
@@ -40,13 +40,13 @@
   font-size: 54px;
   color: rgb(33, 33, 33);
   font-weight: 400;
-  margin-left: -20px;
+  margin: 0;
 }
 .Weather .unit {
   position: relative;
   top: -25px;
   font-weight: 600;
-  font-size: 25px;
+  font-size: 20px;
 }
 .weather-extras {
   padding-top: 25px;
