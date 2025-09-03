@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
-
 import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
@@ -11,7 +10,7 @@ export default function Weather(props) {
     console.log(response.data);
     setWeatherData({
       ready: true,
-      temperature: response.data.temperature.current,
+      temperature: response.data.temperature,
       condition: response.data.condition.description,
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
@@ -56,6 +55,8 @@ export default function Weather(props) {
       </div>
     );
   } else {
+    search();
     return "Loading...";
   }
 }
+
