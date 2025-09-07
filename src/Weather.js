@@ -52,6 +52,7 @@ export default function Weather(props) {
           </div>
         </form>
         <WeatherInfo data={WeatherData} />
+        <Forecast />
       </div>
     );
   } else {
@@ -59,4 +60,3 @@ export default function Weather(props) {
     return "Loading...";
   }
 }
-
