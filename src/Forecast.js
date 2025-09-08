@@ -1,7 +1,15 @@
 import React from "react";
 import WeatherInfo from "./WeatherInfo";
+import "./Forecast.css";
+import Axios from "axios";
 
 export default function Forecast() {
+  function handleResponse(response) {
+    console.log(response.data);
+  }
+  let city = "Poznan";
+  const url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=6dod2fbfa8c43fe552ftae49bc36d90b`;
+  Axios.get(url).then(handleResponse);
   return (
     <div className="Forecast">
       <div className="row">
