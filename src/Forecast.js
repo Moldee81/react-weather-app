@@ -1,26 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Forecast.css";
 import Axios from "axios";
+import ForecastDay from "./ForecastDay";
 
 export default function Forecast() {
+  let [loaded, setLoaded] = useState(false);
+  let [forecast, setForecast] = useState(false);
   function handleResponse(response) {
-    console.log(response.data);
+    setForecast(response.data.daily);
+    setLoaded(true);
   }
-  let city = "Poznan";
-  const url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=6dod2fbfa8c43fe552ftae49bc36d90b`;
-  Axios.get(url).then(handleResponse);
-  return (
-    <div className="Forecast">
-      <div className="row">
-        <div className="col">
-          <div className="Forecast-day">Mon</div>
-          <div className="Forecast-icon">☀️</div>
-          <div className="Forecast-temperatures">
-            <span className="Forecast-temperature-max">19°</span>
-            <span className="Forecast-temperature-min">14°</span>
+  if (loaded) {
+    console.log(forecast);
+    return (
+      <div className="Forecast">
+        <div className="row">
+          <div className="col"></div>
+          <div>
+            <ForecastDay data={forecast[0]} />
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    const url = `https://api.shecodes.io/weather/v1/forecast?query="Poznan"&key=6dod2fbfa8c43fe552ftae49bc36d90b`;
+    Axios.get(url).then(handleResponse);
+    return null;
+  }
 }
