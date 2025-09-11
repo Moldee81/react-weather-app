@@ -23,6 +23,7 @@ export default function Forecast() {
                 </div>
               );
             }
+            return null;
           })}
         </div>
       </div>
